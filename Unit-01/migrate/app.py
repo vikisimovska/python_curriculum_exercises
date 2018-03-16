@@ -3,7 +3,7 @@ from flask_modus import Modus
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost/computers-db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost/migrate'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
@@ -25,12 +25,16 @@ class Snack(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text)
     kind = db.Column(db.Text)
+    price = db.Column(db.Text)
+    expires = db.Column(db.Integer)
 
     #refers to the rows!!!
-    def __init__(self, name, kind):
+    def __init__(self, name, kind, price, expires):
         self.name = name
         self.kind = kind
-        
+        self.price = price
+        self.expires = expires
+                
     def __repr__(self):
         #return self.namels
         #return f"Snack #{self.id}; Name: {self.name}; Kind: {self.kind}"
