@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -28,17 +29,18 @@ def calc():
 
 @app.route("/math")
 def math():
+    from IPython import embed; embed()
     num1 = int(request.args['num1'])
     num2 = int(request.args['num2'])
     select = request.args['select']
     if  select == 'add':
-        return f"The sum of {num1} + {num2} is {num1 + num2}" 
+        return "The sum of " + "num1" + " + " + "num2" + " is " + str(num1 + num2) 
     if  select == "subtruct":	
-        return f"The substruction of {num1} - {num2} is {num1 - num2}" 
+        return "The substruction of " + "num1" + " - " + "num2" + " is " +  str(num1 - num2) 
     if  select == "multiply":
-        return f"The product of {num1} * {num2} is {num1 * num2}"
+        return "The product of " + "num1" +  " * " + "num2" + " is " + str(num1 * num2)
     if  select == "divide":
-        return f"The divition of {num1} / {num2} is {round((num1 / num2),2)}"
+        return "The divition of " + "num1" + " / " + "num2" + " is " + str(round((num1 / num2),2))
 
 
 
